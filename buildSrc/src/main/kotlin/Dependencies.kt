@@ -11,6 +11,7 @@ object Releases {
 }
 
 object Versions {
+    const val detekt = "1.0.0.RC8"
     const val mapsServiceVersion = "11.0.4"
 
     const val buildToolsVersion = "3.5.0"
@@ -95,4 +96,9 @@ object TestLibraries {
     const val assertjCore = "org.assertj:assertj-core:${Versions.assertjCore}"
     const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
     const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
+}
+
+object CodeSmells {
+    const val detekt =
+        "gradle.plugin.io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Versions.detekt}"
 }

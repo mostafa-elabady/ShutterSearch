@@ -27,10 +27,10 @@ android {
 
 dependencies {
 
-    kapt(Libraries.daggerCompiler)
+    //    kapt(Libraries.daggerCompiler)
     kapt(Libraries.archComponentsCompiler)
 
-    implementation(Libraries.dagger)
+//    implementation(Libraries.dagger)
 
     implementation(Libraries.kotlinStdLib)
 

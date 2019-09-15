@@ -9,12 +9,19 @@ buildscript {
     dependencies {
         classpath(BuildPlugins.androidGradlePlugin)
         classpath(BuildPlugins.kotlinGradlePlugin)
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath(CodeSmells.detekt)
     }
 }
 
+plugins {
+    id("io.gitlab.arturbosch.detekt").version(Versions.detekt)
+
+}
+
 allprojects {
+
+    apply("$rootDir/detekt.gradle")
+
     repositories {
         google()
         jcenter()

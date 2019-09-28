@@ -64,13 +64,14 @@ dependencies {
     compileOnly(Libraries.JAVAX_INJECT)
 
 
-    testImplementation(TestLibraries.JUNIT4)
+    androidTestImplementation(TestLibraries.JUNIT4)
     testImplementation(TestLibraries.ASSERT_J_CORE)
     testImplementation(TestLibraries.MOCKITO_KOTLIN)
     testImplementation(TestLibraries.MOCKITO_INLINE)
-    testImplementation(TestLibraries.KOIN_TEST)
+    androidTestImplementation(TestLibraries.KOIN_TEST)
     testImplementation(TestLibraries.ROOM_TEST)
 
     androidTestImplementation(TestLibraries.TEST_RUNNER)
+    androidTestImplementation(TestLibraries.TEST_RULES)
     androidTestImplementation(TestLibraries.ESPRESSO)
 }

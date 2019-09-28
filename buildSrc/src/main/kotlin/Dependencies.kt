@@ -19,8 +19,8 @@ object Versions {
     const val APP_COMPAT = "1.0.2"
     const val DESIGN = "1.0.0"
     const val RECYCLER_VIEW = "1.0.0"
-    const val JUNIT4 = "4.12"
-    const val TEST_RUNNER = "1.2.0"
+    const val JUNIT4 = "1.1.1"
+    const val ANDROIDX_TEST = "1.1.0"
     const val ESPRESSO = "3.2.0"
     const val ASSERT_J_CORE = "3.12.2"
     const val MOCKITO_KOTLIN = "2.1.0"
@@ -102,8 +102,9 @@ object AndroidX {
 
 
 object TestLibraries {
-    const val JUNIT4 = "junit:junit:${Versions.JUNIT4}"
-    const val TEST_RUNNER = "androidx.test:runner:${Versions.TEST_RUNNER}"
+    const val JUNIT4 = "androidx.test.ext:junit:${Versions.JUNIT4}"
+    const val TEST_RUNNER = "androidx.test:runner:${Versions.ANDROIDX_TEST}"
+    const val TEST_RULES = "androidx.test:rules:${Versions.ANDROIDX_TEST}"
     const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO}"
     const val ASSERT_J_CORE = "org.assertj:assertj-core:${Versions.ASSERT_J_CORE}"
     const val MOCKITO_KOTLIN =

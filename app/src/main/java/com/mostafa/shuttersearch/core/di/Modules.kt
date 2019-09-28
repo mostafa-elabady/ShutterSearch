@@ -5,8 +5,10 @@ import com.mostafa.shuttersearch.core.constant.Api.REQUEST_TIMEOUT
 import com.mostafa.shuttersearch.core.db.ImagesDataBase
 import com.mostafa.shuttersearch.core.network.AuthorizationInterceptor
 import com.mostafa.shuttersearch.feature.search.data.local.ImagesLocalCache
+import com.mostafa.shuttersearch.feature.search.data.local.ImagesLocalCacheImpl
 import com.mostafa.shuttersearch.feature.search.data.remote.ImagesService
 import com.mostafa.shuttersearch.feature.search.data.repository.SearchRepository
+import com.mostafa.shuttersearch.feature.search.data.repository.SearchRepositoryImpl
 import com.mostafa.shuttersearch.feature.search.viewmodel.SearchViewModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -61,7 +63,7 @@ val searchModule = module {
     single { get<ImagesDataBase>().imagesDao() }
 
 
-    single { ImagesLocalCache(get()) }
-    single { SearchRepository(get(), get()) }
+    single<ImagesLocalCache> { ImagesLocalCacheImpl(get()) }
+    single<SearchRepository> { SearchRepositoryImpl(get(), get()) }
     viewModel { SearchViewModel(get()) }
 }

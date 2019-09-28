@@ -8,7 +8,6 @@
     tools:context=".feature.search.view.SearchImagesActivity"
     tools:showIn="@layout/activity_search_images">
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout"
         android:layout_width="0dp"
@@ -55,8 +54,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_layout"
-
-        />
+        app:layout_constraintTop_toBottomOf="@id/input_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

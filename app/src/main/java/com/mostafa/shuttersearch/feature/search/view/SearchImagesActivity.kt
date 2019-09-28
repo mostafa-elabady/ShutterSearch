@@ -36,8 +36,8 @@ class SearchImagesActivity : AppCompatActivity() {
 
         images_recycler.apply {
             layoutManager = GridLayoutManager(this@SearchImagesActivity, 2)
+            itemAnimator = DefaultItemAnimator()
         }
-        images_recycler.itemAnimator = DefaultItemAnimator()
 
         initAdapter()
         val lastQuery = savedInstanceState?.getString(LAST_QUERY)
@@ -70,7 +70,6 @@ class SearchImagesActivity : AppCompatActivity() {
     private fun updateSearchList(searchQuery: Editable?) {
         searchQuery?.let {
             if (it.isNotEmpty()) {
-                images_recycler.scrollToPosition(0)
                 imagesAdapter.submitList(null)
                 searchViewModel.searchImages(it.toString().trim())
             } else {

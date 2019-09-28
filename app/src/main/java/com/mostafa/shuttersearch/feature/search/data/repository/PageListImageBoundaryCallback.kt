@@ -62,8 +62,7 @@ class PageListImageBoundaryCallback(
             .subscribeOn(Schedulers.io())
             .ignoreElement()
             .doFinally { isLoading = false }
-            .subscribe({ Log.i(TAG, "Loading images completed") },
-                { it.printStackTrace() })
+            .subscribe()
 
         compositeDisposable.add(disposable)
     }

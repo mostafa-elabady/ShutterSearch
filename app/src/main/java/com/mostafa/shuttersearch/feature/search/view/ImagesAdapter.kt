@@ -6,15 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mostafa.shuttersearch.feature.search.model.AppImageModel
 
-class ImagesAdapter :
-    PagedListAdapter<AppImageModel, RecyclerView.ViewHolder>(IMAGE_COMPARATOR) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+class ImagesAdapter : PagedListAdapter<AppImageModel, ImageViewHolder>(IMAGE_COMPARATOR) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         return ImageViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val image = getItem(position)
-        (holder as ImageViewHolder).bind(image)
+        holder.bind(image)
     }
 
 

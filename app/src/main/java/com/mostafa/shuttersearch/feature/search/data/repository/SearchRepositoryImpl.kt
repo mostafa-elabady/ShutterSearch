@@ -37,7 +37,7 @@ class SearchRepositoryImpl(
 
     override fun onCleared() {
         imagesLocalCache.onCleared()
-        boundaryCallback.onCleared()
+        boundaryCallback?.onCleared()
     }
 
 }

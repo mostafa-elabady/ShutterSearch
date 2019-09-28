@@ -11,6 +11,8 @@ object Releases {
 }
 
 object Versions {
+    const val MOCKITO_ANDROID = "3.0.0"
+    const val ARCH_CORE = "2.0.0"
     const val DETEKT = "1.0.0.RC8"
 
     const val BUILD_TOOLS_VERSION = "3.5.0"
@@ -110,8 +112,10 @@ object TestLibraries {
     const val MOCKITO_KOTLIN =
         "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.MOCKITO_KOTLIN}"
     const val MOCKITO_INLINE = "org.mockito:mockito-inline:${Versions.MOCKITO_INLINE}"
+    const val MOCKITO_ANDROID = "org.mockito:mockito-android:${Versions.MOCKITO_ANDROID}"
     const val KOIN_TEST = "org.koin:koin-test:${Versions.KOIN}"
     const val ROOM_TEST = "androidx.room:room-testing:${Versions.ROOM}"
+    const val ARCH_CORE_TEST = "androidx.arch.core:core-testing:${Versions.ARCH_CORE}"
 }
 
 object CodeSmells {

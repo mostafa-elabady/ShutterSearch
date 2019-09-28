@@ -12,4 +12,5 @@ val roomTestModule = module {
             .allowMainThreadQueries()
             .build()
     }
+
 }

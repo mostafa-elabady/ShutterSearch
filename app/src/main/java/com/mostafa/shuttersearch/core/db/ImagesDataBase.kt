@@ -21,11 +21,11 @@ abstract class ImagesDataBase : RoomDatabase() {
         // Volatile is used for handling multiple threads
         private var INSTANCE: ImagesDataBase? = null
 
-        fun getInstance(context: Context): ImagesDataBase =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE
-                    ?: buildDatabase(context).also { INSTANCE = it }
+        fun getInstance(context: Context): ImagesDataBase = INSTANCE ?: synchronized(this) {
+            INSTANCE ?: buildDatabase(context).also {
+                INSTANCE = it
             }
+        }
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(

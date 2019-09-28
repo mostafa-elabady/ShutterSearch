@@ -11,5 +11,4 @@ import io.reactivex.Observable
 data class AppSearchResult(
     val data: LiveData<PagedList<AppImageModel>>,
     val error: LiveData<String>
-) {
-}
+)

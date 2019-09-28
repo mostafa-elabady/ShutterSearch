@@ -4,7 +4,6 @@ import com.mostafa.shuttersearch.core.constant.Api.BASE_URL
 import com.mostafa.shuttersearch.core.constant.Api.REQUEST_TIMEOUT
 import com.mostafa.shuttersearch.core.db.ImagesDataBase
 import com.mostafa.shuttersearch.core.network.AuthorizationInterceptor
-import com.mostafa.shuttersearch.feature.home.HomeViewModel
 import com.mostafa.shuttersearch.feature.search.data.local.ImagesLocalCache
 import com.mostafa.shuttersearch.feature.search.data.remote.ImagesService
 import com.mostafa.shuttersearch.feature.search.data.repository.SearchRepository
@@ -65,5 +64,4 @@ val searchModule = module {
     single { ImagesLocalCache(get()) }
     single { SearchRepository(get(), get()) }
     viewModel { SearchViewModel(get()) }
-
 }

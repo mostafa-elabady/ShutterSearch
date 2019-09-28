@@ -12,5 +12,4 @@ data class AppImageModel(
     val thumbnail: String,
     val fullImageUrl: String,
     val searchQuery: String
-) {
-}
+)

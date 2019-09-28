@@ -1,18 +1,18 @@
 plugins {
-    id(BuildPlugins.androidApplication)
-    id(BuildPlugins.kotlinAndroid)
-    id(BuildPlugins.kapt)
-    id(BuildPlugins.kotlinAndroidExtensions)
+    id(BuildPlugins.ANDROID_APPLICATION)
+    id(BuildPlugins.KOTLIN_ANDROID)
+    id(BuildPlugins.KAPT)
+    id(BuildPlugins.KOTLIN_ANDROID_EXTENSIONS)
 }
 
 android {
-    compileSdkVersion(AndroidSdk.compileSdk)
+    compileSdkVersion(AndroidSdk.COMPILE_SDK)
     defaultConfig {
-        applicationId = ApplicationId.id
-        minSdkVersion(AndroidSdk.minSdk)
-        targetSdkVersion(AndroidSdk.targetSdk)
-        versionCode = Releases.versionCode
-        versionName = Releases.versionName
+        applicationId = ApplicationId.ID
+        minSdkVersion(AndroidSdk.MIN_SDK)
+        targetSdkVersion(AndroidSdk.TARGET_SDK)
+        versionCode = Releases.VERSION_CODE
+        versionName = Releases.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -27,50 +27,50 @@ android {
 
 
 dependencies {
-    
-    kapt(Libraries.archComponentsCompiler)
-    kapt(AndroidX.roomCompiler)
+
+    kapt(Libraries.ARCH_COMPONENT_COMPILER)
+    kapt(AndroidX.ROOM_COMPILER)
 
 
-    implementation(Libraries.kotlinStdLib)
+    implementation(Libraries.KOTLIN_STDLIB)
 
-    implementation(AndroidX.appcompat)
-    implementation(Libraries.ktx)
+    implementation(AndroidX.APP_COMPAT)
+    implementation(Libraries.KTX)
 
-    implementation(Libraries.constraintLayout)
-    implementation(Libraries.rxAndroid)
+    implementation(Libraries.CONSTRAINT_LAYOUT)
+    implementation(Libraries.RX_ANDROID)
 
-    implementation(Libraries.rxJava)
+    implementation(Libraries.RXJAVA)
 
-    implementation(AndroidX.recyclerview)
-    implementation(Libraries.retrofit)
-    implementation(Libraries.rxjavaAdapter)
-    implementation(Libraries.moshiConverter)
-    implementation(Libraries.moshi)
-    implementation(Libraries.moshiKotlin)
-    implementation(Libraries.loggingInterceptor)
-    implementation(Libraries.archComponents)
-    implementation(AndroidX.design)
-    implementation(Libraries.koinAndroid)
-    implementation(Libraries.koinScope)
-    implementation(Libraries.koinViewModel)
-    implementation(AndroidX.room)
-    implementation(AndroidX.roomRXJava)
-    implementation(AndroidX.paging)
-    implementation(AndroidX.pagingRXJava)
+    implementation(AndroidX.RECYCLER_VIEW)
+    implementation(Libraries.RETROFIT)
+    implementation(Libraries.RXJAVA_ADAPTER)
+    implementation(Libraries.MOSHI_CONVERTER)
+    implementation(Libraries.MOSHI)
+    implementation(Libraries.MOSHI_KOTLIN)
+    implementation(Libraries.LOGGING_INTERCEPTOR)
+    implementation(Libraries.ARCH_COMPONENTS)
+    implementation(AndroidX.DESIGN)
+    implementation(Libraries.KOIN_ANDROID)
+    implementation(Libraries.KOIN_SCOPE)
+    implementation(Libraries.KOIN_VIEWMODEL)
+    implementation(AndroidX.ROOM)
+    implementation(AndroidX.ROOM_RX_JAVA)
+    implementation(AndroidX.PAGING)
+    implementation(AndroidX.PAGING_RX_JAVA)
     implementation(Libraries.GLIDE)
 
-    compileOnly(Libraries.javaxAnnotation)
-    compileOnly(Libraries.javaxInject)
+    compileOnly(Libraries.JAVAX_ANNOTATION)
+    compileOnly(Libraries.JAVAX_INJECT)
 
 
-    testImplementation(TestLibraries.junit4)
-    testImplementation(TestLibraries.assertjCore)
-    testImplementation(TestLibraries.mockitoKotlin)
-    testImplementation(TestLibraries.mockitoInline)
-    testImplementation(TestLibraries.koinTest)
-    testImplementation(TestLibraries.roomTest)
+    testImplementation(TestLibraries.JUNIT4)
+    testImplementation(TestLibraries.ASSERT_J_CORE)
+    testImplementation(TestLibraries.MOCKITO_KOTLIN)
+    testImplementation(TestLibraries.MOCKITO_INLINE)
+    testImplementation(TestLibraries.KOIN_TEST)
+    testImplementation(TestLibraries.ROOM_TEST)
 
-    androidTestImplementation(TestLibraries.testRunner)
-    androidTestImplementation(TestLibraries.espresso)
+    androidTestImplementation(TestLibraries.TEST_RUNNER)
+    androidTestImplementation(TestLibraries.ESPRESSO)
 }

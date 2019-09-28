@@ -37,9 +37,10 @@ class SearchViewModel(private val searchRepository: SearchRepository) : BaseView
     }
 
     /**
-     * Search a repository based on a query string.
+     * Search for images based on a query string.
+     * @param query to be used for search.
      */
-    fun searchRepo(query: String) {
+    fun searchImages(query: String) {
         queryLiveData.postValue(query)
     }
 

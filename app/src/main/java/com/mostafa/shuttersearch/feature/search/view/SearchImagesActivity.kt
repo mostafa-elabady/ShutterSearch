@@ -1,26 +1,26 @@
 package com.mostafa.shuttersearch.feature.search.view
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.mostafa.shuttersearch.R
 import com.mostafa.shuttersearch.feature.search.model.AppImageModel
 import com.mostafa.shuttersearch.feature.search.viewmodel.SearchViewModel
-
 import kotlinx.android.synthetic.main.activity_search_images.*
 import kotlinx.android.synthetic.main.content_search_images.*
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 class SearchImagesActivity : AppCompatActivity() {
 
@@ -42,13 +42,14 @@ class SearchImagesActivity : AppCompatActivity() {
         initAdapter()
         val lastQuery = savedInstanceState?.getString(LAST_QUERY)
         if (!lastQuery.isNullOrEmpty())
-            searchViewModel.searchRepo(lastQuery)
+            searchViewModel.searchImages(lastQuery)
         initSearchView()
     }
 
     private fun initSearchView() {
         search_editText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_GO) {
+            if (actionId == EditorInfo.IME_ACTION_GO || actionId == EditorInfo.IME_ACTION_SEARCH) {
+                hideKeyboard()
                 updateSearchList(search_editText.text)
                 true
             } else {
@@ -57,6 +58,7 @@ class SearchImagesActivity : AppCompatActivity() {
         }
         search_editText.setOnKeyListener { _, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                hideKeyboard()
                 updateSearchList(search_editText.text)
                 true
             } else {
@@ -65,12 +67,12 @@ class SearchImagesActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateSearchList(searchQuery: Editable) {
-        searchQuery.trim().let {
+    private fun updateSearchList(searchQuery: Editable?) {
+        searchQuery?.let {
             if (it.isNotEmpty()) {
                 images_recycler.scrollToPosition(0)
                 imagesAdapter.submitList(null)
-                searchViewModel.searchRepo(it.toString())
+                searchViewModel.searchImages(it.toString().trim())
             } else {
                 //TODO show message, please provide a value for search.
             }
@@ -105,6 +107,11 @@ class SearchImagesActivity : AppCompatActivity() {
         outState.putString(LAST_QUERY, searchViewModel.getLastQuery())
     }
 
+
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(search_editText.getWindowToken(), 0)
+    }
 
     companion object {
         private const val LAST_QUERY = "last_query"

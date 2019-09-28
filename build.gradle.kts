@@ -7,14 +7,14 @@ buildscript {
 
     }
     dependencies {
-        classpath(BuildPlugins.androidGradlePlugin)
-        classpath(BuildPlugins.kotlinGradlePlugin)
-        classpath(CodeSmells.detekt)
+        classpath(BuildPlugins.ANDROID_GRADLE_PLUGIN)
+        classpath(BuildPlugins.KOTLIN_GRADLE_PLUGIN)
+        classpath(CodeSmells.DETEKT)
     }
 }
 
 plugins {
-    id("io.gitlab.arturbosch.detekt").version(Versions.detekt)
+    id("io.gitlab.arturbosch.detekt").version(Versions.DETEKT)
 
 }
 

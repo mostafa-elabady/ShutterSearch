@@ -22,15 +22,15 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+
 }
 
 
 dependencies {
-
-    //    kapt(Libraries.daggerCompiler)
+    
     kapt(Libraries.archComponentsCompiler)
+    kapt(AndroidX.roomCompiler)
 
-//    implementation(Libraries.dagger)
 
     implementation(Libraries.kotlinStdLib)
 
@@ -46,10 +46,19 @@ dependencies {
     implementation(Libraries.retrofit)
     implementation(Libraries.rxjavaAdapter)
     implementation(Libraries.moshiConverter)
+    implementation(Libraries.moshi)
+    implementation(Libraries.moshiKotlin)
     implementation(Libraries.loggingInterceptor)
     implementation(Libraries.archComponents)
     implementation(AndroidX.design)
-    implementation(Libraries.mapsService)
+    implementation(Libraries.koinAndroid)
+    implementation(Libraries.koinScope)
+    implementation(Libraries.koinViewModel)
+    implementation(AndroidX.room)
+    implementation(AndroidX.roomRXJava)
+    implementation(AndroidX.paging)
+    implementation(AndroidX.pagingRXJava)
+    implementation(Libraries.GLIDE)
 
     compileOnly(Libraries.javaxAnnotation)
     compileOnly(Libraries.javaxInject)
@@ -59,6 +68,9 @@ dependencies {
     testImplementation(TestLibraries.assertjCore)
     testImplementation(TestLibraries.mockitoKotlin)
     testImplementation(TestLibraries.mockitoInline)
+    testImplementation(TestLibraries.koinTest)
+    testImplementation(TestLibraries.roomTest)
+
     androidTestImplementation(TestLibraries.testRunner)
     androidTestImplementation(TestLibraries.espresso)
 }

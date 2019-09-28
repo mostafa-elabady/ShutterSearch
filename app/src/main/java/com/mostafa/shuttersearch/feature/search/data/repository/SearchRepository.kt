@@ -4,4 +4,5 @@ import com.mostafa.shuttersearch.feature.search.model.AppSearchResult
 
 interface SearchRepository {
     fun search(query: String): AppSearchResult
+    fun onCleared()
 }

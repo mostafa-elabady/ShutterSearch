@@ -27,9 +27,9 @@ class SearchViewModel(private val searchRepository: SearchRepository) : BaseView
     }
 
     val images: LiveData<PagedList<AppImageModel>> =
-        Transformations.switchMap(searchResult) { it -> it.data }
+        Transformations.switchMap(searchResult) { it.data }
 
-    val error: LiveData<String> = Transformations.switchMap(searchResult) { it ->
+    val error: LiveData<String> = Transformations.switchMap(searchResult) {
         it.error
     }
 
@@ -42,4 +42,9 @@ class SearchViewModel(private val searchRepository: SearchRepository) : BaseView
     }
 
     fun getLastQuery(): String? = queryLiveData.value
+
+    override fun onCleared() {
+        super.onCleared()
+        searchRepository.onCleared()
+    }
 }

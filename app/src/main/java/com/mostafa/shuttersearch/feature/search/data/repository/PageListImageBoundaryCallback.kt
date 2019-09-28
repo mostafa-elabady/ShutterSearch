@@ -9,6 +9,7 @@ import com.mostafa.shuttersearch.feature.search.data.local.ImagesLocalCache
 import com.mostafa.shuttersearch.feature.search.data.remote.ImagesService
 import com.mostafa.shuttersearch.feature.search.model.AppImageModel
 import com.mostafa.shuttersearch.feature.search.model.convertToAppModel
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class PageListImageBoundaryCallback(
@@ -27,6 +28,8 @@ class PageListImageBoundaryCallback(
 
     private var isLoading = false
 
+
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun onZeroItemsLoaded() {
         requestAndSaveData(query)
@@ -57,11 +60,18 @@ class PageListImageBoundaryCallback(
                 _networkErrors.postValue(error.message)
             }
             .subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.io())
             .ignoreElement()
             .doFinally { isLoading = false }
             .subscribe({ Log.i(TAG, "Loading images completed") },
                 { it.printStackTrace() })
+
+        compositeDisposable.add(disposable)
+    }
+
+    fun onCleared() {
+        if (!compositeDisposable.isDisposed) {
+            compositeDisposable.clear()
+        }
     }
 
 

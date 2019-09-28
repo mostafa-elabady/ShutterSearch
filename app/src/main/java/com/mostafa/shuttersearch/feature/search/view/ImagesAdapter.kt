@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mostafa.shuttersearch.feature.search.model.AppImageModel
 
-class ImagesAdapter : PagedListAdapter<AppImageModel, RecyclerView.ViewHolder>(IMAGE_COMPARATOR) {
+class ImagesAdapter :
+    PagedListAdapter<AppImageModel, RecyclerView.ViewHolder>(IMAGE_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ImageViewHolder.create(parent)
     }

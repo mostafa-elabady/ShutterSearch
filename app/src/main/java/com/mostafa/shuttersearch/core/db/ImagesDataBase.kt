@@ -2,7 +2,7 @@ package com.mostafa.shuttersearch.core.db
 
 import android.content.Context
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteOpenHelper
+import com.mostafa.shuttersearch.core.constant.DataBaseConstant
 import com.mostafa.shuttersearch.feature.search.data.local.ImagesDao
 import com.mostafa.shuttersearch.feature.search.model.AppImageModel
 
@@ -30,7 +30,7 @@ abstract class ImagesDataBase : RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                ImagesDataBase::class.java, "images.db"
+                ImagesDataBase::class.java, DataBaseConstant.DB_NAME
             ).build()
     }
 }

@@ -10,16 +10,9 @@ import io.reactivex.disposables.Disposable
  */
 abstract class BaseViewModel : ViewModel() {
 
-    /***
-     * Backing property for [isLoading] to prevent modifications.
-     */
-    private val _isLoading = MutableLiveData<Boolean?>()
 
-    /***
-     *
-     */
-    val isLoading: MutableLiveData<Boolean?>
-        get() = _isLoading
+    var isLoading: MutableLiveData<Boolean?> = MutableLiveData<Boolean?>()
+        private set
 
     protected val compositeDisposable: CompositeDisposable = CompositeDisposable()
 

@@ -11,18 +11,18 @@ class SearchRepositoryImpl(
     private val imagesLocalCache: ImagesLocalCache
 ) : SearchRepository {
 
+    lateinit var boundaryCallback: PageListImageBoundaryCallback
 
     /**
      * Search images whose names match the query.
      */
-
     override fun search(query: String): AppSearchResult {
 
         // Get data source factory from the local cache
         val dataSourceFactory = imagesLocalCache.getImages(query)
 
         // Construct the boundary callback
-        val boundaryCallback = PageListImageBoundaryCallback(query, apiService, imagesLocalCache)
+        boundaryCallback = PageListImageBoundaryCallback(query, apiService, imagesLocalCache)
 
         // Get the network errors exposed by the boundary callback
         val networkErrors = boundaryCallback.networkErrors
@@ -33,6 +33,11 @@ class SearchRepositoryImpl(
             .build()
 
         return AppSearchResult(data, networkErrors)
+    }
+
+    override fun onCleared() {
+        imagesLocalCache.onCleared()
+        boundaryCallback.onCleared()
     }
 
 }

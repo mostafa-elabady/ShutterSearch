@@ -7,11 +7,17 @@ import com.mostafa.shuttersearch.search.search.viewmodel.SearchViewModel
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
+import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.schedulers.Schedulers
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
+
+
 class SearchViewModelTest {
+
+
 
 
     private lateinit var viewModel: SearchViewModel
@@ -21,6 +27,8 @@ class SearchViewModelTest {
 
     @Before
     fun setUp() {
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
+
         viewModel = SearchViewModel(mockRepository)
     }
 

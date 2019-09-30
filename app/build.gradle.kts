@@ -4,7 +4,6 @@ plugins {
     id(BuildPlugins.KAPT)
     id(BuildPlugins.KOTLIN_ANDROID_EXTENSIONS)
 }
-
 android {
     compileSdkVersion(AndroidSdk.COMPILE_SDK)
     defaultConfig {
@@ -25,23 +24,15 @@ android {
 
 }
 
-
 dependencies {
-
     kapt(Libraries.ARCH_COMPONENT_COMPILER)
     kapt(AndroidX.ROOM_COMPILER)
-
-
     implementation(Libraries.KOTLIN_STDLIB)
-
     implementation(AndroidX.APP_COMPAT)
     implementation(Libraries.KTX)
-
     implementation(Libraries.CONSTRAINT_LAYOUT)
     implementation(Libraries.RX_ANDROID)
-
     implementation(Libraries.RXJAVA)
-
     implementation(AndroidX.RECYCLER_VIEW)
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RXJAVA_ADAPTER)
@@ -62,7 +53,6 @@ dependencies {
 
     compileOnly(Libraries.JAVAX_ANNOTATION)
     compileOnly(Libraries.JAVAX_INJECT)
-
 
     androidTestImplementation(TestLibraries.JUNIT4)
     testImplementation(TestLibraries.ASSERT_J_CORE)

@@ -25,8 +25,14 @@ Please add your [ShutterStock API key](https://developers.shutterstock.com) in `
 
 The project architecture is based on Model-View-ViewModel (MVVM) pattern.
 
-`core` 
-- `base`
+`core` for core classes to be used across the app
+- `base` contains ```BaseViewModel``` for loading handling
+- `constant` for App constants
+- `db` for Data base handling
+- `di` for dependency injection handling using `koin`
+- `network` for API network handling.
+
+
 
 
 

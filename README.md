@@ -42,7 +42,7 @@ images source: https://codelabs.developers.google.com/codelabs/android-paging
 - [Espresso](https://developer.android.com/training/testing/espresso) For UI testing
 - [Mockito](https://site.mockito.org/) Mocking framework for unit testing
 - [Glide](https://github.com/bumptech/glide) for image loading
-
+- [detekt](https://github.com/arturbosch/detekt) for Kotlin static code analysis
 
 ## Clone ##
 ```git clone https://github.com/mostafa-elabady/ShutterSearch.git```

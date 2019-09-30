@@ -5,11 +5,16 @@ this solution is focused on building Android app.
 The app is built with MVVM and clean arcitecture.
 
 
-Room is the source of data 
+Room is the main source of data, and when we need to load more data from API, ```PageListImageBoundaryCallback``` will handle loading and saving data to room.
 
-![alt How paging is working] (https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
-
+ ### How paging is working ###
 ![alt text](https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
+
+
+![alt text](https://codelabs.developers.google.com/codelabs/android-paging/img/e6a52e528d1c22db.gif)
+
+images source: https://codelabs.developers.google.com/codelabs/android-paging
+
 
 
 ### Why MVVM? ###
@@ -44,7 +49,7 @@ Room is the source of data
 
 ## Installation ##
 
-Please add your [ShutterStock API key](https://developers.shutterstock.com) in ```API_TOKEN``` in ```AppConstants.kt```
+Please add your [ShutterStock API key](https://developers.shutterstock.com) in ```API_TOKEN``` in ```AppConstants.kt``` for basic authentication.
 
 ## Main entities ##
 
@@ -69,14 +74,11 @@ The project architecture is based on Model-View-ViewModel (MVVM) pattern.
 
 
 
-Description of the problem and solution.
+## Improvements ##
 
-
-The reasoning behind your technical choices, including architectural.
-
-Trade-offs you might have made, anything you left out, or what you might do differently if you were to spend additional time on the project.
-
-Link to the hosted application where applicable.
+- More unit, integration and UI test cases
+- Integration with CI, for example BitRise or travis CI.
+- Improve UI.
 
 
 

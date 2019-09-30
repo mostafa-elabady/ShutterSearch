@@ -7,7 +7,7 @@ The app is built with MVVM and clean arcitecture.
 
 Room is the source of data 
 
-![How paging is working] (https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
+![alt How paging is working] (https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
 
 ### Why MVVM? ###
 

@@ -1,5 +1,27 @@
 # ShutterSearch
-Sample app for getting images from ShutterStock APIs
+Android sample app for getting images from ShutterStock APIs, it's using [/v2/images/search] (https://api-reference.shutterstock.com/?javascript--nodejs#images-search-for-images) endpoint for searching for images.
+this solution is focused on building Android app.
+
+The app is built with MVVM and clean arcitecture.
+
+
+Room is the source of data 
+
+![How paging is working] (https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
+
+### Why MVVM? ###
+
+- MVVM separates your view from your business logic.
+- Android Architecture Components already provides a built-in ViewModel class.
+- Separate the responsibilities of your code base
+
+
+### Why clean architecture? ###
+
+- App code is more easily testable than with plain MVVM.
+- decoupling layers.
+- The package structure is even easier to navigate.
+- The project is even easier to maintain.
 
 ## Libraries ##
 - [RXJava2](https://github.com/ReactiveX/RxJava) Reactive programming library 
@@ -32,7 +54,26 @@ The project architecture is based on Model-View-ViewModel (MVVM) pattern.
 - `di` for dependency injection handling using `koin`
 - `network` for API network handling.
 
+`search` main package for search feature
+- `data` for data handling using a repository, remote calling, and also caching local.
+- `model` API model and app UI models
+- `view` contains main views, adapters,etc.
+- `viewmodel` contains the view model.
 
+
+## Public profile ##
+[LinkedIn] (https://www.linkedin.com/in/mostafaelabady)
+
+
+
+Description of the problem and solution.
+
+
+The reasoning behind your technical choices, including architectural.
+
+Trade-offs you might have made, anything you left out, or what you might do differently if you were to spend additional time on the project.
+
+Link to the hosted application where applicable.
 
 
 

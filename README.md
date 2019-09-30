@@ -19,14 +19,14 @@ Sample app for getting images from ShutterStock APIs
 
 ## Installation ##
 
-Please add your [ShutterStock API key](https://developers.shutterstock.com) in ```API_TOKEN``` in ```AppConstants.kt``
-`
+Please add your [ShutterStock API key](https://developers.shutterstock.com) in ```API_TOKEN``` in ```AppConstants.kt```
+
 ## Main entities ##
 
 The project architecture is based on Model-View-ViewModel (MVVM) pattern.
 
 `core` 
-- ```base
+- `base`
 
 
 

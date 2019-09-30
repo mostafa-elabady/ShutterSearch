@@ -1,8 +1,8 @@
 package com.mostafa.shuttersearch.model
 
 import com.mostafa.shuttersearch.apiImageModel
-import com.mostafa.shuttersearch.feature.search.model.convertToAppModel
 import com.mostafa.shuttersearch.appImageModel
+import com.mostafa.shuttersearch.search.search.model.convertToAppModel
 import org.junit.Assert
 import org.junit.Test
 

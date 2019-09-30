@@ -1,7 +1,7 @@
 package com.mostafa.shuttersearch
 
-import com.mostafa.shuttersearch.feature.search.model.ApiImageModel
-import com.mostafa.shuttersearch.feature.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.search.model.ApiImageModel
+import com.mostafa.shuttersearch.search.search.model.AppImageModel
 
 val appImageModel = AppImageModel("10", "Berlin city", "", "", "Berlin")
 

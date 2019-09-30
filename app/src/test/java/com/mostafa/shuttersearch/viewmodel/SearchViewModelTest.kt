@@ -1,12 +1,12 @@
 package com.mostafa.shuttersearch.viewmodel
 
-import com.mostafa.shuttersearch.feature.search.data.repository.SearchRepository
-import com.mostafa.shuttersearch.feature.search.model.AppSearchResult
-import com.mostafa.shuttersearch.feature.search.viewmodel.SearchViewModel
+import androidx.lifecycle.MutableLiveData
+import com.mostafa.shuttersearch.search.search.data.repository.SearchRepository
+import com.mostafa.shuttersearch.search.search.model.AppSearchResult
+import com.mostafa.shuttersearch.search.search.viewmodel.SearchViewModel
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import io.reactivex.Single
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -19,45 +19,31 @@ class SearchViewModelTest {
     private val mockRepository: SearchRepository = mock()
 
 
-    private val throwable = Throwable()
-
-
     @Before
     fun setUp() {
         viewModel = SearchViewModel(mockRepository)
     }
 
-//    @Test
-//    fun `get cars  list succeeds`() {
-//
-//        // given
-//        whenever(mockRepository.search("")).thenReturn(AppSearchResult(null, null))
-//
-//        // when
-//        viewModel.searchImages("")
-//
-//        // then
-//        verify(mockRepository.search(""))
-//        Assert.assertEquals(
-//            carResponse,
-//            viewModel.images.value
-//        )
-//    }
+    @Test
+    fun `get images  list succeeds`() {
 
-//    @Test
-//    fun `get cars  list fails`() {
-//        // given
-//        whenever(mockRepository.getCars(searchParams)).thenReturn(Single.error(throwable))
-//
-//
-//        // when
-//        viewModel.getCars(searchParams)
-//
-//        // then
-//        verify(mockRepository.getCars(searchParams))
-//        Assert.assertNotNull(viewModel.error.value)
-//
-//    }
+        val appSearchResult =
+            AppSearchResult(MutableLiveData(), MutableLiveData<String>())
+        val query = "Germany"
+
+        // given
+        whenever(mockRepository.search(query)).thenReturn(appSearchResult)
+
+        // when
+        viewModel.searchImages(query)
+
+        // then
+        verify(mockRepository.search(query))
+        Assert.assertEquals(
+            appSearchResult.data,
+            viewModel.images.value
+        )
+    }
 
 
 }

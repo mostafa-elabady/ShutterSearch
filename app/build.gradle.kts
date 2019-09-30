@@ -69,7 +69,8 @@ dependencies {
     testImplementation(TestLibraries.MOCKITO_KOTLIN)
     testImplementation(TestLibraries.MOCKITO_INLINE)
     androidTestImplementation(TestLibraries.KOIN_TEST) {
-        exclude(group = "org.mockito")
+        exclude("org.mockito")
+        exclude("mockito-inline")
     }
     testImplementation(TestLibraries.ROOM_TEST)
 
@@ -78,6 +79,6 @@ dependencies {
     androidTestImplementation(TestLibraries.ESPRESSO)
     androidTestImplementation(TestLibraries.ARCH_CORE_TEST)
     androidTestImplementation(TestLibraries.MOCKITO_ANDROID)
-    androidTestImplementation(TestLibraries.MOCKITO_KOTLIN)
+
 
 }

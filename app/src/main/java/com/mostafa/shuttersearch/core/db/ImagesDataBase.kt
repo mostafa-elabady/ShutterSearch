@@ -1,10 +1,12 @@
 package com.mostafa.shuttersearch.core.db
 
 import android.content.Context
-import androidx.room.*
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.mostafa.shuttersearch.core.constant.DataBaseConstant
-import com.mostafa.shuttersearch.feature.search.data.local.ImagesDao
-import com.mostafa.shuttersearch.feature.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.search.data.local.ImagesDao
+import com.mostafa.shuttersearch.search.search.model.AppImageModel
 
 
 @Database(

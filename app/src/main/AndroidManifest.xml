@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".feature.search.view.SearchImagesActivity"
+            android:name="com.mostafa.shuttersearch.search.search.view.SearchImagesActivity"
             android:label="@string/title_activity_search_images"
             android:theme="@style/AppTheme.NoActionBar">
 

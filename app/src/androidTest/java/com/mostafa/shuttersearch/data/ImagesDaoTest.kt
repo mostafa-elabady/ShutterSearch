@@ -4,15 +4,16 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.paging.toLiveData
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.mostafa.shuttersearch.core.constant.Api.PAGE_SIZE
 import com.mostafa.shuttersearch.core.db.ImagesDataBase
-import com.mostafa.shuttersearch.di.roomTestModule
-import com.mostafa.shuttersearch.feature.search.data.local.ImagesDao
-import com.mostafa.shuttersearch.feature.search.model.AppImageModel
+import com.mostafa.shuttersearch.roomTestModule
+import com.mostafa.shuttersearch.search.search.data.local.ImagesDao
+import com.mostafa.shuttersearch.search.search.model.AppImageModel
 import org.junit.*
 import org.junit.runner.RunWith
-import org.koin.core.context.loadKoinModules
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
@@ -37,14 +38,20 @@ class ImagesDaoTest : KoinTest {
 
     @Before()
     fun before() {
+        stopKoin()
+        startKoin {
+            androidContext(ApplicationProvider.getApplicationContext())
+            modules(roomTestModule)
+        }
         weatherDAO.deleteAll()
+
     }
 
     /**
      * Close resources
      */
     @After
-    fun after() {
+    fun cleanUp() {
         weatherDatabase.close()
         stopKoin()
     }
@@ -56,12 +63,9 @@ class ImagesDaoTest : KoinTest {
         val thirdImage = AppImageModel("3", "Android desc", "", "", "Android 3")
 
         val list = listOf(firstImage, secondImage, thirdImage)
-
         weatherDAO.insert(list)
 
-
         val requestResponse = weatherDAO.getImages("Android")
-
         // compare result
         Assert.assertEquals(list, requestResponse.toLiveData(PAGE_SIZE).blockingObserve())
     }

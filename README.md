@@ -70,7 +70,7 @@ The project architecture is based on Model-View-ViewModel (MVVM) pattern.
 
 
 ## Public profile ##
-[LinkedIn] (https://www.linkedin.com/in/mostafaelabady)
+[LinkedIn](https://www.linkedin.com/in/mostafaelabady)
 
 
 

@@ -11,7 +11,7 @@ object Api {
 
     // Api token key
     //@TODO Move the key to gradle.properties file, the key shouldn't be exposed here.
-    const val API_TOKEN = "v2/MDFmN2EtYjdhM2EtZTYzMzUtZWE2OTUtYjYyYWItNjkyMzgvMjQ1MDg1MzI2L2N1c3RvbWVyLzMvTjdVT0xPTnNsTmhSdFBZaHR6YVU1Rk9VLWhBWVhEMGJkQVdscU9XYUpFYy1GcVBLMlVSTnI1Z1F2U2ozbGFjdDhYZmRHU3R3b1p5dlBWSmg4SWhEemN2aDFsLTRjSjhfTW5fYU1LeHhYRGZyTklLZnNKOHdPSlo2NFQ4LWZNbUF4d1E1OFJndzZhblEwd3Q4WmljZjF5NExaYU0zRDJfUTZPUXJyOFBTV3Fjb3VTRjJ6cmtoQy1oYk1uV3dDLXd4WnNDVWpMUzcyb0hweXpUU1IzYUVHdw"
+    const val API_TOKEN = "YOUR_API_KEY"
 
 
     const val IMAGE_URL_FORMAT = "https://image.shutterstock.com/z/-%s.jpg"

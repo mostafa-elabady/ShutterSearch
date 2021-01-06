@@ -12,7 +12,7 @@ object Releases {
 
 object Versions {
     const val MOCKITO_ANDROID = "2.6.1"
-    const val ARCH_CORE = "2.0.0"
+    const val ARCH_CORE = "2.1.0"
     const val DETEKT = "1.0.0.RC8"
 
     const val BUILD_TOOLS_VERSION = "3.5.0"

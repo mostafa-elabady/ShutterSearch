@@ -8,10 +8,8 @@ The app is built with MVVM and clean arcitecture.
 Room is the main source of data, and when we need to load more data from API, ```PageListImageBoundaryCallback``` will handle loading and saving data to room.
 
  ### How paging is working ###
-![alt text](https://codelabs.developers.google.com/codelabs/android-paging/img/511a702ae4af43cd.png)
+![alt text](https://github.com/mostafa-elabady/ShutterSearch/blob/master/images/paging.png?raw=true)
 
-
-![alt text](https://codelabs.developers.google.com/codelabs/android-paging/img/e6a52e528d1c22db.gif)
 
 images source: https://codelabs.developers.google.com/codelabs/android-paging
 

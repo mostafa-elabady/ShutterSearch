@@ -17,17 +17,13 @@ import org.junit.Test
 
 class SearchViewModelTest {
 
-
-
-
     private lateinit var viewModel: SearchViewModel
 
     private val mockRepository: SearchRepository = mock()
 
-
     @Before
     fun setUp() {
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { _ -> Schedulers.trampoline() }
 
         viewModel = SearchViewModel(mockRepository)
     }

@@ -102,7 +102,6 @@ object AndroidX {
     const val PAGING_RX_JAVA = "androidx.paging:paging-rxjava2-ktx:${Versions.PAGING}"
 }
 
-
 object TestLibraries {
     const val JUNIT4 = "androidx.test.ext:junit:${Versions.JUNIT4}"
     const val TEST_RUNNER = "androidx.test:runner:${Versions.ANDROIDX_TEST}"

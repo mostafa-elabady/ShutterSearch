@@ -4,8 +4,8 @@ import androidx.room.Room
 import com.mostafa.shuttersearch.core.db.ImagesDataBase
 import com.mostafa.shuttersearch.search.search.data.local.ImagesLocalCache
 import com.mostafa.shuttersearch.search.search.data.local.ImagesLocalCacheImpl
-import com.mostafa.shuttersearch.search.search.data.repository.SearchRepository
-import com.mostafa.shuttersearch.search.search.data.repository.SearchRepositoryImpl
+import com.mostafa.shuttersearch.search.data.repository.SearchRepository
+import com.mostafa.shuttersearch.search.data.repository.SearchRepositoryImpl
 import org.koin.dsl.module
 
 

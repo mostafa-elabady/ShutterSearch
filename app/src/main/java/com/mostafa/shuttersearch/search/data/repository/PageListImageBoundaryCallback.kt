@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.data.repository
+package com.mostafa.shuttersearch.search.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import com.mostafa.shuttersearch.core.constant.Api.PAGE_SIZE
 import com.mostafa.shuttersearch.search.search.data.local.ImagesLocalCache
-import com.mostafa.shuttersearch.search.search.data.remote.ImagesService
+import com.mostafa.shuttersearch.search.data.remote.ImagesService
 import com.mostafa.shuttersearch.search.search.model.AppImageModel
 import com.mostafa.shuttersearch.search.search.model.convertToAppModel
 import io.reactivex.disposables.CompositeDisposable

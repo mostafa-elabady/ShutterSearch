@@ -6,9 +6,9 @@ import com.mostafa.shuttersearch.core.db.ImagesDataBase
 import com.mostafa.shuttersearch.core.network.AuthorizationInterceptor
 import com.mostafa.shuttersearch.search.search.data.local.ImagesLocalCache
 import com.mostafa.shuttersearch.search.search.data.local.ImagesLocalCacheImpl
-import com.mostafa.shuttersearch.search.search.data.remote.ImagesService
-import com.mostafa.shuttersearch.search.search.data.repository.SearchRepository
-import com.mostafa.shuttersearch.search.search.data.repository.SearchRepositoryImpl
+import com.mostafa.shuttersearch.search.data.remote.ImagesService
+import com.mostafa.shuttersearch.search.data.repository.SearchRepository
+import com.mostafa.shuttersearch.search.data.repository.SearchRepositoryImpl
 import com.mostafa.shuttersearch.search.search.viewmodel.SearchViewModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

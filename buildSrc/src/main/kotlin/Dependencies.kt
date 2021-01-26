@@ -12,7 +12,7 @@ object Releases {
 
 object Versions {
     const val MOCKITO_ANDROID = "2.6.1"
-    const val ARCH_CORE = "2.0.0"
+    const val ARCH_CORE = "2.1.0"
     const val DETEKT = "1.0.0.RC8"
 
     const val BUILD_TOOLS_VERSION = "3.5.0"
@@ -101,7 +101,6 @@ object AndroidX {
     const val PAGING = "androidx.paging:paging-runtime-ktx:${Versions.PAGING}"
     const val PAGING_RX_JAVA = "androidx.paging:paging-rxjava2-ktx:${Versions.PAGING}"
 }
-
 
 object TestLibraries {
     const val JUNIT4 = "androidx.test.ext:junit:${Versions.JUNIT4}"

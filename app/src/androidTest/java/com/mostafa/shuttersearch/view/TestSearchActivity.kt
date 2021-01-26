@@ -29,12 +29,10 @@ import org.mockito.Mockito.mock
 @RunWith(AndroidJUnit4::class)
 class TestSearchActivity : KoinTest {
 
-
     @get:Rule
     val activityRule = ActivityTestRule(SearchImagesActivity::class.java)
 
     lateinit var viewModel: SearchViewModel
-
 
     @Before
     fun init() {
@@ -74,7 +72,6 @@ class TestSearchActivity : KoinTest {
         Mockito.verify(viewModel).searchImages(searchQuery)
 
     }
-
 
     @Test
     fun emptyListShowsNoResultMessage() {

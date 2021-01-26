@@ -1,9 +1,9 @@
-package com.mostafa.shuttersearch.search.search.data.repository
+package com.mostafa.shuttersearch.search.data.repository
 
 import android.nfc.tech.MifareUltralight.PAGE_SIZE
 import androidx.paging.LivePagedListBuilder
 import com.mostafa.shuttersearch.search.search.data.local.ImagesLocalCache
-import com.mostafa.shuttersearch.search.search.data.remote.ImagesService
+import com.mostafa.shuttersearch.search.data.remote.ImagesService
 import com.mostafa.shuttersearch.search.search.model.AppSearchResult
 
 class SearchRepositoryImpl(

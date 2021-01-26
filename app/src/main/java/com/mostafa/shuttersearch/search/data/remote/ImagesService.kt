@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.data.remote
+package com.mostafa.shuttersearch.search.data.remote
 
 import com.mostafa.shuttersearch.core.constant.Api.PAGE_KEY
 import com.mostafa.shuttersearch.core.constant.Api.PAGE_SIZE

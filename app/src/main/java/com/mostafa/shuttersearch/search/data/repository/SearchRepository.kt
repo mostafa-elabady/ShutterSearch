@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.data.repository
+package com.mostafa.shuttersearch.search.data.repository
 
 import com.mostafa.shuttersearch.search.search.model.AppSearchResult
 

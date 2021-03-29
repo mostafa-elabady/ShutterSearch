@@ -16,7 +16,6 @@ jobs:
 
     steps:
       - name: Checkout the code
-        id: checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -27,10 +26,9 @@ jobs:
         run: |
           echo "::set-output name=commits::$(git rev-list --count HEAD)"
 
-      - name: Get output
-        run: |
+      - name: Get color
+        run: 
         echo "The number of commits are ${{ steps.version.outputs.commits }}"
-        echo "The number of commits are ${{ steps.checkout.outputs }}"
 
 #      - name: Set up JDK 1.8
 #        uses: actions/setup-java@v1

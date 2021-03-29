@@ -22,13 +22,13 @@ jobs:
 
       - name: Get App version
         id: version
-        shell: bash
+#        shell: bash
         run: |
           echo "::set-output name=commits::$(git rev-list --count HEAD)"
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
      - name: Get color
-        run: echo "The number of commits are ${{ steps.version.outputs.commits }}"
+       run: echo "The number of commits are ${{ steps.version.outputs.commits }}"
 
 #      - name: Set up JDK 1.8
 #        uses: actions/setup-java@v1

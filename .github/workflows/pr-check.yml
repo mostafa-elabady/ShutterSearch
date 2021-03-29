@@ -24,6 +24,7 @@ jobs:
         id: version
         run: |
           echo "::set-output name=commits::$(git rev-list --count HEAD)"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
      - name: Get color
         run: echo "The number of commits are ${{ steps.version.outputs.commits }}"

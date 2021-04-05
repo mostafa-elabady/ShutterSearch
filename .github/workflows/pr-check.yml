@@ -97,7 +97,7 @@ jobs:
           path: app/build/reports
         if: always()
 
-  build and publish:
+  build_and_publish:
     runs-on: ubuntu-latest
 
     steps:

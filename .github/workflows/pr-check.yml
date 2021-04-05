@@ -49,8 +49,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        api-level: [23, 29]
-        target: [default, google_apis]
+        api-level: [29]
+        target: [default]
 
     steps:
       - name: Checkout the code
@@ -85,6 +85,8 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
+          target: google_apis
+          arch: x86
 #          target: ${{ matrix.target }}
           script: ./gradlew connectedAndroidTest
 

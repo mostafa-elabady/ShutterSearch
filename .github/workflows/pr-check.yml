@@ -20,8 +20,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run detekt all
-        run: ./gradlew detektAll
+      - name: Run detekt
+        run: ./gradlew detektCheck
 
 #      - name: Get App version
 #        id: version

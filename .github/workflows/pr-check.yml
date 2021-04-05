@@ -36,9 +36,14 @@ jobs:
         with:
           name: apk
           path: app/build/outputs/apk/debug/app-debug.apk
+        if: always()
 
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        api-level: [23, 29]
+        target: [default, google_apis]
 
     steps:
       - name: Checkout the code
@@ -65,7 +70,8 @@ jobs:
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
+          api-level: ${{ matrix.api-level }}
+          target: ${{ matrix.target }}
           script: ./gradlew connectedAndroidTest
 
       - name: Upload Reports
@@ -73,6 +79,7 @@ jobs:
         with:
           name: Test-Reports
           path: app/build/reports
+        if: always()
 
 
 #      - name: Get App version

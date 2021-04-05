@@ -72,6 +72,7 @@ dependencies {
     androidTestImplementation(TestLibraries.TEST_RULES)
     androidTestImplementation(TestLibraries.ESPRESSO)
 
+    androidTestImplementation(TestLibraries.ARCH_CORE_TEST)
     androidTestImplementation(TestLibraries.MOCKITO_ANDROID)
 
 

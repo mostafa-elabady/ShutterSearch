@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        api-level: [29]
+        api-level: [21]
         target: [default]
 
     steps:
@@ -84,7 +84,7 @@ jobs:
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 28
+          api-level: 21
           target: google_apis
           arch: x86
 #          target: ${{ matrix.target }}

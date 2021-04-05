@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.view
+package com.mostafa.shuttersearch.search.view
 
 import android.content.Intent
 import android.net.Uri
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.mostafa.shuttersearch.R
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.model.AppImageModel
 
 /***
  * View holder for [AppImageModel] recyclerView.

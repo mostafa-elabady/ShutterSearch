@@ -1,9 +1,9 @@
-package com.mostafa.shuttersearch.search.search.view
+package com.mostafa.shuttersearch.search.view
 
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.model.AppImageModel
 
 class ImagesAdapter : PagedListAdapter<AppImageModel, ImageViewHolder>(IMAGE_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {

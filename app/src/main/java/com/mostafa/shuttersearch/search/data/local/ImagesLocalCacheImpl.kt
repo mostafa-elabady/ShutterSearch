@@ -1,6 +1,6 @@
-package com.mostafa.shuttersearch.search.search.data.local
+package com.mostafa.shuttersearch.search.data.local
 
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.model.AppImageModel
 import io.reactivex.Completable
 import io.reactivex.CompletableObserver
 import io.reactivex.android.schedulers.AndroidSchedulers

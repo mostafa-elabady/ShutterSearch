@@ -10,8 +10,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.mostafa.shuttersearch.R
 import com.mostafa.shuttersearch.roomTestModule
-import com.mostafa.shuttersearch.search.search.view.SearchImagesActivity
-import com.mostafa.shuttersearch.search.search.viewmodel.SearchViewModel
+import com.mostafa.shuttersearch.search.view.SearchImagesActivity
+import com.mostafa.shuttersearch.search.viewmodel.SearchViewModel
 import com.mostafa.shuttersearch.searchTestModule
 import org.junit.After
 import org.junit.Before

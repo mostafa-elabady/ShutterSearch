@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.view
+package com.mostafa.shuttersearch.search.view
 
 import android.content.Context
 import android.os.Bundle
@@ -15,8 +15,8 @@ import androidx.paging.PagedList
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mostafa.shuttersearch.R
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
-import com.mostafa.shuttersearch.search.search.viewmodel.SearchViewModel
+import com.mostafa.shuttersearch.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.activity_search_images.*
 import kotlinx.android.synthetic.main.content_search_images.*
 import org.koin.android.viewmodel.ext.android.viewModel

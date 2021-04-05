@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.model
+package com.mostafa.shuttersearch.search.model
 
 import com.mostafa.shuttersearch.core.constant.Api.IMAGE_URL_FORMAT
 import com.mostafa.shuttersearch.core.constant.Api.THUMBNAIL_URL_FORMAT

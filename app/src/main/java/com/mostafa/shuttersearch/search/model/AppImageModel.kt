@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.model
+package com.mostafa.shuttersearch.search.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

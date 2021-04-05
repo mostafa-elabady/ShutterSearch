@@ -9,8 +9,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.mostafa.shuttersearch.core.constant.Api.PAGE_SIZE
 import com.mostafa.shuttersearch.core.db.ImagesDataBase
 import com.mostafa.shuttersearch.roomTestModule
-import com.mostafa.shuttersearch.search.search.data.local.ImagesDao
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.data.local.ImagesDao
+import com.mostafa.shuttersearch.search.model.AppImageModel
 import org.junit.*
 import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext

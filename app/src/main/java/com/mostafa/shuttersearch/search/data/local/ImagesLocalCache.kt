@@ -1,7 +1,7 @@
-package com.mostafa.shuttersearch.search.search.data.local
+package com.mostafa.shuttersearch.search.data.local
 
 import androidx.paging.DataSource
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.model.AppImageModel
 
 interface ImagesLocalCache {
     fun storeImages(movieList: List<AppImageModel>)

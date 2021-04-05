@@ -23,6 +23,13 @@ jobs:
           API_TOKEN: ${{ secrets.API_OTKEN }}
         run: echo API_TOKEN=\"$API_TOKEN\" > ./local.properties
 
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -56,6 +63,13 @@ jobs:
           API_TOKEN: ${{ secrets.API_OTKEN }}
         run: echo API_TOKEN=\"$API_TOKEN\" > ./local.properties
 
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -70,8 +84,8 @@ jobs:
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
+          api-level: 29
+#          target: ${{ matrix.target }}
           script: ./gradlew connectedAndroidTest
 
       - name: Upload Reports

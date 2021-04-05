@@ -5,6 +5,7 @@ plugins {
     id(BuildPlugins.KOTLIN_ANDROID)
     id(BuildPlugins.KAPT)
     id(BuildPlugins.KOTLIN_ANDROID_EXTENSIONS)
+    id("com.google.gms.google-services")
 }
 android {
     compileSdkVersion(AndroidSdk.COMPILE_SDK)
@@ -53,6 +54,7 @@ dependencies {
     implementation(AndroidX.PAGING)
     implementation(AndroidX.PAGING_RX_JAVA)
     implementation(Libraries.GLIDE)
+    implementation(platform("com.google.firebase:firebase-bom:26.8.0"))
 
     compileOnly(Libraries.JAVAX_ANNOTATION)
     compileOnly(Libraries.JAVAX_INJECT)

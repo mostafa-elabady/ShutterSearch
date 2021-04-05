@@ -10,6 +10,7 @@ buildscript {
         classpath(BuildPlugins.ANDROID_GRADLE_PLUGIN)
         classpath(BuildPlugins.KOTLIN_GRADLE_PLUGIN)
         classpath(CodeSmells.DETEKT)
+        classpath(GooglePlugins.GOOGLE_SERVICES)
     }
 }
 

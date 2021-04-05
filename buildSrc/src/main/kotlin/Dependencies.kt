@@ -38,8 +38,8 @@ object Versions {
     const val MOSHI = "1.8.0"
     const val ROOM = "2.2.0-rc01"
     const val PAGING = "2.1.0"
-
     const val GLIDE_VERSION = "4.10.0"
+    const val GOOGLE_SERVICES = "4.3.5"
 
 }
 
@@ -53,6 +53,9 @@ object BuildPlugins {
     const val KOTLIN_ANDROID_EXTENSIONS = "kotlin-android-extensions"
 }
 
+object GooglePlugins{
+    const val GOOGLE_SERVICES = "com.google.gms:google-services:${Versions.GOOGLE_SERVICES}"
+}
 object AndroidSdk {
     const val MIN_SDK = 19
     const val COMPILE_SDK = 28

@@ -21,7 +21,6 @@ import org.koin.test.inject
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
-
 @RunWith(AndroidJUnit4::class)
 class ImagesDaoTest : KoinTest {
 
@@ -30,7 +29,6 @@ class ImagesDaoTest : KoinTest {
      */
     val weatherDatabase: ImagesDataBase by inject()
     val weatherDAO: ImagesDao by inject()
-
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -70,7 +68,6 @@ class ImagesDaoTest : KoinTest {
         Assert.assertEquals(list, requestResponse.toLiveData(PAGE_SIZE).blockingObserve())
     }
 }
-
 
 fun <T> LiveData<T>.blockingObserve(): T? {
     var value: T? = null

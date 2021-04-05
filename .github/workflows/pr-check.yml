@@ -20,6 +20,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Load API Token from secrets
+        env:
+          API_TOKEN: ${{ secrets.API_OTKEN }}
+        run: echo API_TOKEN=\"$API_TOKEN\" > ./local.properties
+
       - name: Run detekt
         run: ./gradlew detektCheck
 

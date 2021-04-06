@@ -40,6 +40,7 @@ object Versions {
     const val PAGING = "2.1.0"
     const val GLIDE_VERSION = "4.10.0"
     const val GOOGLE_SERVICES = "4.3.5"
+    const val FIREBASE = "26.8.0"
 
 }
 
@@ -53,9 +54,10 @@ object BuildPlugins {
     const val KOTLIN_ANDROID_EXTENSIONS = "kotlin-android-extensions"
 }
 
-object GooglePlugins{
+object GooglePlugins {
     const val GOOGLE_SERVICES = "com.google.gms:google-services:${Versions.GOOGLE_SERVICES}"
 }
+
 object AndroidSdk {
     const val MIN_SDK = 19
     const val COMPILE_SDK = 28
@@ -91,6 +93,7 @@ object Libraries {
     const val KOIN_SCOPE = "org.koin:koin-android-scope:${Versions.KOIN}"
 
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
+    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.FIREBASE}"
 
 }
 

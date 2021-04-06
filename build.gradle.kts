@@ -16,7 +16,6 @@ buildscript {
 
 plugins {
     id("io.gitlab.arturbosch.detekt").version(Versions.DETEKT)
-
 }
 
 allprojects {

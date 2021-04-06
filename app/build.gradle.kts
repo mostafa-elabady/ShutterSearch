@@ -1,5 +1,7 @@
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
+val gitCommitCount = "git rev-list --count HEAD".runCommand().toInt()
+
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)
@@ -14,7 +16,7 @@ android {
         applicationId = ApplicationId.ID
         minSdkVersion(AndroidSdk.MIN_SDK)
         targetSdkVersion(AndroidSdk.TARGET_SDK)
-        versionCode = Releases.VERSION_CODE
+        versionCode = gitCommitCount
         versionName = Releases.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "API_TOKEN", getLocalKey("API_TOKEN"))
@@ -82,3 +84,17 @@ dependencies {
 }
 
 fun getLocalKey(key: String): String = gradleLocalProperties(rootDir).getProperty(key)
+
+fun String.runCommand(workingDir: File = file("./")): String {
+    val parts = this.split("\\s".toRegex())
+    val proc = ProcessBuilder(*parts.toTypedArray())
+        .directory(workingDir)
+        .redirectOutput(ProcessBuilder.Redirect.PIPE)
+        .redirectError(ProcessBuilder.Redirect.PIPE)
+        .start()
+
+    proc.waitFor(1, TimeUnit.MINUTES)
+    val res = proc.inputStream.bufferedReader().readText().trim()
+    println("runCommand output:$res")
+    return res
+}

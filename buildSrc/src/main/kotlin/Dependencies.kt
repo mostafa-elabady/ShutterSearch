@@ -40,7 +40,8 @@ object Versions {
     const val PAGING = "2.1.0"
     const val GLIDE_VERSION = "4.10.0"
     const val GOOGLE_SERVICES = "4.3.5"
-    const val FIREBASE = "26.8.0"
+    const val FIREBASE_BOM = "26.8.0"
+    const val FIREBASE_APP_DISTRIBUTION = "2.1.0"
 
 }
 
@@ -56,6 +57,10 @@ object BuildPlugins {
 
 object GooglePlugins {
     const val GOOGLE_SERVICES = "com.google.gms:google-services:${Versions.GOOGLE_SERVICES}"
+}
+
+object FireBase {
+    const val FIREBASE_APP_DISTRIBUTION_CLASSPATH  = "com.google.firebase:firebase-appdistribution-gradle:${Versions.FIREBASE_APP_DISTRIBUTION}"
 }
 
 object AndroidSdk {
@@ -93,7 +98,7 @@ object Libraries {
     const val KOIN_SCOPE = "org.koin:koin-android-scope:${Versions.KOIN}"
 
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
-    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.FIREBASE}"
+    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.FIREBASE_BOM}"
 
 }
 

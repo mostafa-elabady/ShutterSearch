@@ -11,6 +11,7 @@ buildscript {
         classpath(BuildPlugins.KOTLIN_GRADLE_PLUGIN)
         classpath(CodeSmells.DETEKT)
         classpath(GooglePlugins.GOOGLE_SERVICES)
+        classpath(FireBase.FIREBASE_APP_DISTRIBUTION_CLASSPATH)
     }
 }
 

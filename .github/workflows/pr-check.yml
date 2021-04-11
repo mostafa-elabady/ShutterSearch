@@ -12,7 +12,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the code
@@ -38,15 +38,23 @@ jobs:
       - name: Build the app
         run: ./gradlew assembleDebug
 
-      - name: Upload Reports
+      - name: Upload apk
         uses: actions/upload-artifact@v2
         with:
-          name: apk
+          name: debug apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload build Reports
         if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: build report
+          path: app/build/reports
+
 
   test:
     runs-on: macos-latest
+    needs: build
     strategy:
       matrix:
         api-level: [26]
@@ -84,7 +92,7 @@ jobs:
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.level }}
+          api-level: ${{ matrix.api-level }}
           target: ${{ matrix.target }}
           arch: x86
           profile: Nexus 6

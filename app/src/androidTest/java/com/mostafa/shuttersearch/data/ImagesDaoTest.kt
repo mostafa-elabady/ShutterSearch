@@ -11,6 +11,7 @@ import com.mostafa.shuttersearch.core.db.ImagesDataBase
 import com.mostafa.shuttersearch.roomTestModule
 import com.mostafa.shuttersearch.search.data.local.ImagesDao
 import com.mostafa.shuttersearch.search.model.AppImageModel
+import com.mostafa.shuttersearch.searchTestModule
 import org.junit.*
 import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext
@@ -27,8 +28,9 @@ class ImagesDaoTest : KoinTest {
     /*
      * Inject needed components from Koin
      */
-    val weatherDatabase: ImagesDataBase by inject()
-    val weatherDAO: ImagesDao by inject()
+    private val weatherDatabase: ImagesDataBase by inject()
+
+    private val weatherDAO: ImagesDao by inject()
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -39,7 +41,12 @@ class ImagesDaoTest : KoinTest {
         stopKoin()
         startKoin {
             androidContext(ApplicationProvider.getApplicationContext())
-            modules(roomTestModule)
+            modules(
+                listOf(
+                    roomTestModule,
+                    searchTestModule
+                )
+            )
         }
         weatherDAO.deleteAll()
 

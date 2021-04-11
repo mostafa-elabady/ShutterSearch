@@ -84,11 +84,13 @@ jobs:
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 26
-          target: google_apis
+          api-level: 23
+            target: default
+            arch: x86
+            profile: Nexus 6
+            script: ./gradlew connectedCheck --stacktrace
 #          arch: x86
 #          target: ${{ matrix.target }}
-          script: ./gradlew connectedAndroidTest
 
       - name: Upload Reports
         uses: actions/upload-artifact@v2
@@ -97,59 +99,59 @@ jobs:
           path: app/build/reports
         if: always()
 
-  build_and_publish:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Load API Token from secrets
-        env:
-          API_TOKEN: ${{ secrets.API_OTKEN }}
-        run: echo API_TOKEN=\"$API_TOKEN\" > ./local.properties
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
-
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-
-      - name: Build the app
-        run: ./gradlew assembleRelease
-
-      - name: Sign APK
-        uses: r0adkll/sign-android-release@v1
-        id: sign
-        with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: release.apk
-          path: ${{steps.sign.outputs.signedReleaseFile}}
-
-      - name: upload artifact to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{secrets.FIREBASE_APP_ID}}
-          token: ${{secrets.FIREBASE_TOKEN}}
-          groups: Testers
-          file: app/build/outputs/apk/release/app-release-unsigned.apk
-
-      - name: Get App version
-        id: version
-        run: |
-          echo "::set-output name=commits::$(git rev-list --count HEAD)"
+#  build_and_publish:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout the code
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Load API Token from secrets
+#        env:
+#          API_TOKEN: ${{ secrets.API_OTKEN }}
+#        run: echo API_TOKEN=\"$API_TOKEN\" > ./local.properties
+#
+#      - uses: actions/cache@v2
+#        with:
+#          path: |
+#            ~/.gradle/caches
+#            ~/.gradle/wrapper
+#          key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+#
+#      - name: Set up JDK 1.8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#
+#      - name: Build the app
+#        run: ./gradlew assembleRelease
+#
+#      - name: Sign APK
+#        uses: r0adkll/sign-android-release@v1
+#        id: sign
+#        with:
+#          releaseDirectory: app/build/outputs/apk/release
+#          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+#          alias: ${{ secrets.ALIAS }}
+#          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+#          keyPassword: ${{ secrets.KEY_PASSWORD }}
+#
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: release.apk
+#          path: ${{steps.sign.outputs.signedReleaseFile}}
+#
+#      - name: upload artifact to Firebase App Distribution
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1
+#        with:
+#          appId: ${{secrets.FIREBASE_APP_ID}}
+#          token: ${{secrets.FIREBASE_TOKEN}}
+#          groups: Testers
+#          file: app/build/outputs/apk/release/app-release-unsigned.apk
+#
+#      - name: Get App version
+#        id: version
+#        run: |
+#          echo "::set-output name=commits::$(git rev-list --count HEAD)"

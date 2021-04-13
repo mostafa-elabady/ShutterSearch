@@ -83,11 +83,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/release/app-release-unsigned.apk
-          asset_name: shutter-search.apk
+          asset_path: ${{steps.sign.outputs.signedReleaseFile}}
+          asset_name: signed-app.apk
           asset_content_type: application/zip
-
-#
-#      - name: Get commits
-#        run:
-#        echo "The number of commits are ${{ steps.version.outputs.commits }}"

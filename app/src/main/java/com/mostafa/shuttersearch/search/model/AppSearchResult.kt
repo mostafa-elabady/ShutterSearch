@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.model
+package com.mostafa.shuttersearch.search.model
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList

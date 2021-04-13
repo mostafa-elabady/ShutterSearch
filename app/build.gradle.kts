@@ -1,8 +1,14 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
+val gitCommitCount = "git rev-list --count HEAD".runCommand().toInt()
+
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)
     id(BuildPlugins.KAPT)
     id(BuildPlugins.KOTLIN_ANDROID_EXTENSIONS)
+    id("com.google.gms.google-services")
+    id("com.google.firebase.appdistribution")
 }
 android {
     compileSdkVersion(AndroidSdk.COMPILE_SDK)
@@ -10,9 +16,10 @@ android {
         applicationId = ApplicationId.ID
         minSdkVersion(AndroidSdk.MIN_SDK)
         targetSdkVersion(AndroidSdk.TARGET_SDK)
-        versionCode = Releases.VERSION_CODE
+        versionCode = gitCommitCount
         versionName = Releases.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_TOKEN", getLocalKey("API_TOKEN"))
     }
 
     buildTypes {
@@ -50,6 +57,7 @@ dependencies {
     implementation(AndroidX.PAGING)
     implementation(AndroidX.PAGING_RX_JAVA)
     implementation(Libraries.GLIDE)
+    implementation(platform(Libraries.FIREBASE_BOM))
 
     compileOnly(Libraries.JAVAX_ANNOTATION)
     compileOnly(Libraries.JAVAX_INJECT)
@@ -69,7 +77,24 @@ dependencies {
     androidTestImplementation(TestLibraries.TEST_RULES)
     androidTestImplementation(TestLibraries.ESPRESSO)
 
+    androidTestImplementation(TestLibraries.ARCH_CORE_TEST)
     androidTestImplementation(TestLibraries.MOCKITO_ANDROID)
 
 
+}
+
+fun getLocalKey(key: String): String = gradleLocalProperties(rootDir).getProperty(key)
+
+fun String.runCommand(workingDir: File = file("./")): String {
+    val parts = this.split("\\s".toRegex())
+    val proc = ProcessBuilder(*parts.toTypedArray())
+        .directory(workingDir)
+        .redirectOutput(ProcessBuilder.Redirect.PIPE)
+        .redirectError(ProcessBuilder.Redirect.PIPE)
+        .start()
+
+    proc.waitFor(1, TimeUnit.MINUTES)
+    val res = proc.inputStream.bufferedReader().readText().trim()
+    println("runCommand output:$res")
+    return res
 }

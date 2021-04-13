@@ -1,4 +1,3 @@
-
 name: Check PR
 
 on:
@@ -17,14 +16,146 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      
+
+      - name: Load API Token from secrets
+        env:
+          API_TOKEN: ${{ secrets.API_OTKEN }}
+        run: echo API_TOKEN=\"$API_TOKEN\" > ./local.properties
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+
+      - name: Copy gradle properties file
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
+
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Build the app
+        run: ./gradlew assembleDebug
 
-      - name: Run tests
+      - name: Upload apk
+        uses: actions/upload-artifact@v2
+        with:
+          name: debug apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+
+
+  test:
+    runs-on: macos-latest
+    needs: build
+    strategy:
+      matrix:
+        api-level: [21, 23, 29]
+        target: [default]
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      #        with:
+      #          fetch-depth: 0
+
+      - name: Load API Token from secrets
+        env:
+          API_TOKEN: ${{ secrets.API_OTKEN }}
+        run: echo API_TOKEN=\"$API_TOKEN\" > ./local.properties
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+
+      - name: Copy  gradle properties file
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Run detekt
+        run: ./gradlew detektCheck
+
+      - name: Run unit tests
         run: ./gradlew test --stacktrace
+
+      - name: Instrumentation Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: ${{ matrix.target }}
+          arch: x86
+          profile: Nexus 6
+          script: ./gradlew connectedCheck --stacktrace
+
+      - name: Upload Reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test-Reports
+          path: app/build/reports
+        if: always()
+
+#  build_and_publish:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout the code
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Load API Token from secrets
+#        env:
+#          API_TOKEN: ${{ secrets.API_OTKEN }}
+#        run: echo API_TOKEN=\"$API_TOKEN\" > ./local.properties
+#
+#      - uses: actions/cache@v2
+#        with:
+#          path: |
+#            ~/.gradle/caches
+#            ~/.gradle/wrapper
+#          key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+#
+#      - name: Set up JDK 1.8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#
+#      - name: Build the app
+#        run: ./gradlew assembleRelease
+#
+#      - name: Sign APK
+#        uses: r0adkll/sign-android-release@v1
+#        id: sign
+#        with:
+#          releaseDirectory: app/build/outputs/apk/release
+#          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+#          alias: ${{ secrets.ALIAS }}
+#          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+#          keyPassword: ${{ secrets.KEY_PASSWORD }}
+#
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: release.apk
+#          path: ${{steps.sign.outputs.signedReleaseFile}}
+#
+#      - name: upload artifact to Firebase App Distribution
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1
+#        with:
+#          appId: ${{secrets.FIREBASE_APP_ID}}
+#          token: ${{secrets.FIREBASE_TOKEN}}
+#          groups: Testers
+#          file: app/build/outputs/apk/release/app-release-unsigned.apk
+#
+#      - name: Get App version
+#        id: version
+#        run: |
+#          echo "::set-output name=commits::$(git rev-list --count HEAD)"

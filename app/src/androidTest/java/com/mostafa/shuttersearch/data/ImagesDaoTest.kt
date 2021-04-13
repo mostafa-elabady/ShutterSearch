@@ -9,8 +9,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.mostafa.shuttersearch.core.constant.Api.PAGE_SIZE
 import com.mostafa.shuttersearch.core.db.ImagesDataBase
 import com.mostafa.shuttersearch.roomTestModule
-import com.mostafa.shuttersearch.search.search.data.local.ImagesDao
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.data.local.ImagesDao
+import com.mostafa.shuttersearch.search.model.AppImageModel
+import com.mostafa.shuttersearch.searchTestModule
 import org.junit.*
 import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext
@@ -21,16 +22,15 @@ import org.koin.test.inject
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
-
 @RunWith(AndroidJUnit4::class)
 class ImagesDaoTest : KoinTest {
 
     /*
      * Inject needed components from Koin
      */
-    val weatherDatabase: ImagesDataBase by inject()
-    val weatherDAO: ImagesDao by inject()
+    private val weatherDatabase: ImagesDataBase by inject()
 
+    private val weatherDAO: ImagesDao by inject()
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -41,7 +41,12 @@ class ImagesDaoTest : KoinTest {
         stopKoin()
         startKoin {
             androidContext(ApplicationProvider.getApplicationContext())
-            modules(roomTestModule)
+            modules(
+                listOf(
+                    roomTestModule,
+                    searchTestModule
+                )
+            )
         }
         weatherDAO.deleteAll()
 
@@ -70,7 +75,6 @@ class ImagesDaoTest : KoinTest {
         Assert.assertEquals(list, requestResponse.toLiveData(PAGE_SIZE).blockingObserve())
     }
 }
-
 
 fun <T> LiveData<T>.blockingObserve(): T? {
     var value: T? = null

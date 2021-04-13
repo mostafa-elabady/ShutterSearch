@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import com.mostafa.shuttersearch.core.constant.Api.PAGE_SIZE
-import com.mostafa.shuttersearch.search.search.data.local.ImagesLocalCache
+import com.mostafa.shuttersearch.search.data.local.ImagesLocalCache
 import com.mostafa.shuttersearch.search.data.remote.ImagesService
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
-import com.mostafa.shuttersearch.search.search.model.convertToAppModel
+import com.mostafa.shuttersearch.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.model.convertToAppModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 

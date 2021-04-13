@@ -1,4 +1,4 @@
-package com.mostafa.shuttersearch.search.search.viewmodel
+package com.mostafa.shuttersearch.search.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,8 +6,8 @@ import androidx.lifecycle.Transformations
 import androidx.paging.PagedList
 import com.mostafa.shuttersearch.core.base.BaseViewModel
 import com.mostafa.shuttersearch.search.data.repository.SearchRepository
-import com.mostafa.shuttersearch.search.search.model.AppImageModel
-import com.mostafa.shuttersearch.search.search.model.AppSearchResult
+import com.mostafa.shuttersearch.search.model.AppImageModel
+import com.mostafa.shuttersearch.search.model.AppSearchResult
 
 
 /**

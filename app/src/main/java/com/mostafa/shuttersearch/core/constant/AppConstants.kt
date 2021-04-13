@@ -1,5 +1,8 @@
 package com.mostafa.shuttersearch.core.constant
 
+import com.mostafa.shuttersearch.BuildConfig
+
+
 object Api {
     const val REQUEST_TIMEOUT: Long = 30
     const val BASE_URL: String = "https://api.shutterstock.com/v2/"
@@ -11,7 +14,7 @@ object Api {
 
     // Api token key
     //@TODO Move the key to gradle.properties file, the key shouldn't be exposed here.
-    const val API_TOKEN = "YOUR_API_KEY"
+    const val API_TOKEN = BuildConfig.API_TOKEN
 
 
     const val IMAGE_URL_FORMAT = "https://image.shutterstock.com/z/-%s.jpg"

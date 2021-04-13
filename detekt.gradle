@@ -4,7 +4,7 @@ detekt {
     version = Versions.DETEKT
     profile("main") {
         input = "$projectDir"
-        config = "$project.rootDir/DETEKT-ruleset.yml"
+        config = "$project.rootDir/detekt-ruleset.yml"
         filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
         output = "${project.buildDir}/reports/DETEKT.xml"
         parallel = true

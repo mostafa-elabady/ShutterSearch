@@ -62,10 +62,29 @@ jobs:
           groups: Testers
           file: app/build/outputs/apk/release/app-release-unsigned.apk
 
-      - name: Get App version
+      - name: Get App version code
         id: version
         run: |
           echo "::set-output name=commits::$(git rev-list --count HEAD)"
+
+      - name: Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release v.1.${{ steps.version.outputs.commits }}
+        env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release APK
+        id: upload_release_asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: app/build/outputs/apk/release/app-release-unsigned.apk
+          asset_name: shutter-search.apk
+          asset_content_type: application/zip
 
 #
 #      - name: Get commits

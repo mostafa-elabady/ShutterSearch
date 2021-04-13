@@ -29,7 +29,7 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
 
-      - name: Copy  gradle properties file
+      - name: Copy gradle properties file
         run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
 
       - name: Set up JDK 1.8
@@ -95,8 +95,6 @@ jobs:
           arch: x86
           profile: Nexus 6
           script: ./gradlew connectedCheck --stacktrace
-      #          arch: x86
-      #          target: ${{ matrix.target }}
 
       - name: Upload Reports
         uses: actions/upload-artifact@v2

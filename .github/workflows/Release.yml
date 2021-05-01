@@ -2,7 +2,7 @@
 name: Release
 
 on:
-  # Triggers the workflow on every pull request to master
+  # Triggers the workflow on every push to master
   push:
     branches:
       - master
